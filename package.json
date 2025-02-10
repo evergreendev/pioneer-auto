@@ -15,35 +15,55 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@payloadcms/next": "latest",
-    "@payloadcms/payload-cloud": "latest",
-    "@payloadcms/richtext-lexical": "latest",
+    "@next/third-parties": "^15.1.6",
+    "@payloadcms/db-postgres": "3.21.0",
+    "@payloadcms/live-preview-react": "3.21.0",
+    "@payloadcms/next": "3.21.0",
+    "@payloadcms/payload-cloud": "3.21.0",
+    "@payloadcms/plugin-form-builder": "3.21.0",
+    "@payloadcms/plugin-redirects": "3.21.0",
+    "@payloadcms/plugin-search": "3.21.0",
+    "@payloadcms/plugin-seo": "3.21.0",
+    "@payloadcms/richtext-lexical": "3.21.0",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-select": "^2.1.6",
+    "@tailwindcss/postcss": "^4.0.6",
+    "class-variance-authority": "^0.7.1",
     "cross-env": "^7.0.3",
+    "eslint-plugin-react-hooks": "^5.2.0-canary-93b58361-20250209",
+    "geist": "^1.3.1",
     "graphql": "^16.8.1",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.474.0",
     "next": "15.1.5",
-    "payload": "latest",
+    "nodemailer": "^6.10.0",
+    "payload": "3.21.0",
+    "payload-admin-bar": "^1.0.6",
+    "postcss": "^8.5.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-hook-form": "^7.54.2",
     "sharp": "0.32.6",
-    "@payloadcms/db-postgres": "latest"
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@tailwindcss/typography": "^0.5.13",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^22.5.4",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
+    "autoprefixer": "^10.4.19",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.1.5",
     "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"
   },
   "engines": {
-    "node": "^18.20.2 || >=20.9.0",
-    "pnpm": "^9"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp"
-    ]
+    "node": "^18.20.2 || >=20.9.0"
   }
 }
