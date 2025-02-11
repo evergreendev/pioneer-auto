@@ -57,7 +57,20 @@ export const Pages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          fields: [],
+          fields: [
+            {
+              name: 'images',
+              type: 'array',
+              fields: [
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                }
+              ]
+
+            }
+          ],
           label: 'Hero',
         },
         {

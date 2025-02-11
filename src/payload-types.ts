@@ -131,6 +131,12 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
+  images?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   layout: (
     | ContentBlock
     | MediaBlock
@@ -558,6 +564,12 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   layout?:
     | T
     | {
