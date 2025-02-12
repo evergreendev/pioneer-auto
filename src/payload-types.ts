@@ -153,6 +153,8 @@ export interface Page {
         blockName?: string | null;
         blockType: 'IFrame';
       }
+    | PoppyFormBlock
+    | LinkBlock
   )[];
   meta?: {
     title?: string | null;
@@ -239,6 +241,41 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PoppyFormBlock".
+ */
+export interface PoppyFormBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'PoppyFormBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "linkBlock".
+ */
+export interface LinkBlock {
+  links: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?: {
+        relationTo: 'pages';
+        value: number | Page;
+      } | null;
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'highlight') | null;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'linkBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -589,6 +626,8 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        PoppyFormBlock?: T | PoppyFormBlockSelect<T>;
+        linkBlock?: T | LinkBlockSelect<T>;
       };
   meta?:
     | T
@@ -647,6 +686,37 @@ export interface MediaBlockSelect<T extends boolean = true> {
         url?: T;
         label?: T;
         appearance?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PoppyFormBlock_select".
+ */
+export interface PoppyFormBlockSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "linkBlock_select".
+ */
+export interface LinkBlockSelect<T extends boolean = true> {
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
       };
   id?: T;
   blockName?: T;

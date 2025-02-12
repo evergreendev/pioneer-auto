@@ -11,7 +11,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <section>
-      <Header centerNav={false}/>
+      {/*<Header centerNav={false}/>*/}
       {children}
     </section>
   )

@@ -3,6 +3,7 @@ import { FormBlock, FormBlockType } from '@/blocks/Form/Component'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
 import { ContentBlock } from '@/blocks/Content/Component'
+import { LinkBlock } from '@/blocks/LinkBlock/Component'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
 
 import {
@@ -29,6 +30,7 @@ export type NodeTypes =
       | Extract<Page['layout'][0], { blockType: 'cta' }>
       | Extract<Page['layout'][0], { blockType: 'mediaBlock' }>
       | Extract<Page['layout'][0], { blockType: 'content' }>
+  | Extract<Page['layout'][0], {blockType: 'linkBlock'}>
   | FormBlockType
   | Extract<Page['layout'][0], { blockType: 'IFrame' }>
     >
@@ -114,6 +116,8 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           switch (blockType) {
             case 'content':
               return <ContentBlock key={index} {...block} />
+            case 'linkBlock':
+              return <LinkBlock key={index} {...block} />
             case 'mediaBlock':
               return (
                 <MediaBlock

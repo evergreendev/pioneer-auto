@@ -3,16 +3,16 @@ import type { Metadata } from 'next'
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   description:
-    'Custer, in the heart of the Black Hills National Forest, is just minutes from the adventures of Custer State Park, Crazy Horse Memorial, Mount Rushmore and two national caves.',
+    'Pure Bridal is Rapid City, South Dakota’s premier bridal boutique, offering an exquisite collection of wedding gowns that cater to every bride’s unique style and vision. With a carefully curated selection of designer dresses, exceptional customer service, and a warm, welcoming atmosphere, Pure Bridal ensures every bride’s shopping experience is as magical as the big day itself. Whether you\'re searching for a timeless, elegant look or a modern, fashion-forward gown, their expert consultants are dedicated to helping you find the perfect dress to say "I do" in.',
   images: [
     {
       url: process.env.NEXT_PUBLIC_SERVER_URL
-        ? `${process.env.NEXT_PUBLIC_SERVER_URL}/custer-chamber-og.webp`
-        : '/custer-chamber-og.webp',
+        ? `${process.env.NEXT_PUBLIC_SERVER_URL}/Pure Bridal Logo Black & Dress-1.png`
+        : '/Pure Bridal Logo Black & Dress-1.png',
     },
   ],
-  siteName: 'Custer Chamber of Commerce',
-  title: 'Custer Chamber of Commerce',
+  siteName: 'Pure Bridal',
+  title: 'Pure Bridal',
 }
 
 export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'] => {

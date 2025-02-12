@@ -6,12 +6,16 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import IFrameBlock from '@/blocks/IFrame/Component'
+import PoppyForm  from '@/blocks/PoppyForm/Component'
+import { LinkBlock } from '@/blocks/LinkBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  IFrame: IFrameBlock
+  IFrame: IFrameBlock,
+  PoppyFormBlock: PoppyForm,
+  linkBlock: LinkBlock,
 }
 
 export const RenderBlocks: React.FC<{

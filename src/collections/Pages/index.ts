@@ -17,6 +17,8 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import IFrame from '@/blocks/IFrame/config'
+import { PoppyFormBlock } from '@/blocks/PoppyForm/config'
+import {LinkBlock} from '@/blocks/LinkBlock/config'
 export const Pages: CollectionConfig = {
   slug: 'pages',
   access: {
@@ -78,7 +80,7 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Content, MediaBlock, IFrame],
+              blocks: [Content, MediaBlock, IFrame, PoppyFormBlock, LinkBlock],
               required: true,
             },
           ],

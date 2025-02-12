@@ -13,6 +13,7 @@ import PageClient from './page.client'
 import { Header } from '@/Header/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { getPayload } from 'payload'
+import Hero from '@/components/Hero'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -52,16 +53,22 @@ export default async function Page({ params: paramsPromise }: Args) {
     return <PayloadRedirects url={url} />
   }
 
-  const { layout } = page
+  const { layout, images } = page
 
   return (
     <>
-      {slug === 'home' ? <Header centerNav={true} /> : null}
-      <article className={`${slug === 'home' ? 'pt-16' : ''}`}>
-        <PageClient />
-        {/* Allows redirects for valid pages too */}
-        <PayloadRedirects disableNotFound url={url} />
-        <RenderBlocks blocks={layout} />
+      <article>
+        <div className="w-full mx-auto bg-brand-green1/20">
+          <div className="max-w-screen-xl min-h-screen mx-auto shadow-xl bg-white/50">
+            <PageClient />
+            {/* Allows redirects for valid pages too */}
+            <PayloadRedirects disableNotFound url={url} />
+            {images && <Hero images={images} logo={siteOptions.siteLogoLight}/>}
+            <div className="p-5">
+              <RenderBlocks blocks={layout} />
+            </div>
+          </div>
+        </div>
       </article>
     </>
   )

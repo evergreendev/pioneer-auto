@@ -51,13 +51,14 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       colors: {
         brand: {
+          primary: "#5a86ad",
+          secondary: "#94bde2",
+          accent: "#bba53d",
+          pink: "#e0bba2",
+          green1: "#d2d6a9",
+          green2: "#b6b48c",
           red: '#af3827',
           redPale: '#dda898',
           blue: '#304050',

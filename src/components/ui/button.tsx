@@ -4,7 +4,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import * as React from 'react'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex rounded items-center justify-center whitespace-nowrap text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     defaultVariants: {
       size: 'default',
@@ -20,13 +20,14 @@ const buttonVariants = cva(
         full: 'w-full'
       },
       variant: {
-        default: 'bg-brand-blue text-white hover:bg-brand-blue/90 border-white border-2',
+        default: 'border border-border bg-transparent hover:bg-card hover:text-accent-foreground',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         ghost: 'hover:bg-card hover:text-accent-foreground',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
         outline: 'border border-border bg-transparent hover:bg-card hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        highlight: 'bg-brand-red hover:bg-brand-red/90 border-white border-2 text-white',
+        highlight: 'bg-brand-accent hover:bg-brand-accent/90 hover:border hover:border-white no-underline',
+        gold: 'bg-brand-accent hover:bg-brand-accent/90 hover:border hover:border-white',
         full: 'text-white hover:bg-brand-blue/80 w-full border-0 text-xl flex font-normal bg-brand-blue py-3 px-4 pl-16 text-left justify-start',
         fullOrange: 'text-white hover:bg-brand-red/80 w-full border-0 text-xl flex font-normal bg-brand-red py-3 px-4 pl-16 text-left justify-start'
       },
