@@ -59,12 +59,14 @@ export default async function Page({ params: paramsPromise }: Args) {
     <>
       <article>
         <div className="w-full mx-auto bg-brand-green1/20">
-          <div className="max-w-screen-xl min-h-screen mx-auto shadow-xl bg-white/50">
+          <div className="max-w-screen-xl mx-auto shadow-xl ">
             <PageClient />
             {/* Allows redirects for valid pages too */}
             <PayloadRedirects disableNotFound url={url} />
             {images && <Hero images={images} logo={siteOptions.siteLogoLight}/>}
-            <div className="p-5">
+          </div>
+          <div className="bg-white/50">
+            <div className="max-w-screen-xl mx-auto w-full p-8">
               <RenderBlocks blocks={layout} />
             </div>
           </div>
