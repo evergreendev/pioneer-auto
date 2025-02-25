@@ -25,7 +25,7 @@ const Hero = ({ images, logo }: HeroProps) => {
 
   return (
     <div className="flex flex-wrap w-full max-w-screen-xl">
-      <div className="relative aspect-[120/180] w-full md:w-6/12 overflow-hidden">
+      <div className="relative aspect-[120/180] w-full md:w-4/12 overflow-hidden">
         {images.map((image, i) => {
           if (image.image && typeof image.image !== 'number')
             return (
@@ -51,7 +51,7 @@ const Hero = ({ images, logo }: HeroProps) => {
             )
         })}
       </div>
-      <div className="bg-brand-primary w-full md:w-6/12 z-20 overflow-hidden shadow flex flex-col justify-center items-center">
+      <div className="bg-brand-primary w-full md:w-8/12 z-20 overflow-hidden shadow flex flex-col justify-center items-center">
         <div className="p-8">
           {logo && typeof logo !== 'number' && 'id' in logo && (
             <Link href="/">
