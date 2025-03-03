@@ -26,8 +26,8 @@ const buttonVariants = cva(
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
         outline: 'border border-border bg-transparent hover:bg-card hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        highlight: 'bg-brand-accent hover:bg-brand-accent/90 hover:border hover:border-white no-underline',
-        gold: 'bg-brand-accent hover:bg-brand-accent/90 hover:border hover:border-white',
+        highlight: 'bg-brand-pink hover:bg-brand-pink/90 hover:border hover:border-white no-underline',
+        gold: 'bg-brand-pink hover:bg-brand-pink/90 hover:border hover:border-white',
         full: 'text-white hover:bg-brand-blue/80 w-full border-0 text-xl flex font-normal bg-brand-blue py-3 px-4 pl-16 text-left justify-start',
         fullOrange: 'text-white hover:bg-brand-red/80 w-full border-0 text-xl flex font-normal bg-brand-red py-3 px-4 pl-16 text-left justify-start'
       },
