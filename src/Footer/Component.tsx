@@ -2,7 +2,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import { Facebook, Instagram } from 'lucide-react'
+import { Facebook, Instagram, Youtube } from 'lucide-react'
 
 import type { Footer, SiteOption } from '@/payload-types'
 
@@ -28,8 +28,9 @@ export async function Footer() {
 
         <div className="flex flex-row gap-4 items-center">
           <nav className="flex flex-row gap-4">
-            <Link href="https://www.facebook.com/PureBridalSD"><Facebook/></Link>
-            <Link href="https://instagram.com/purebridalsd"><Instagram/></Link>
+            <Link href="https://www.facebook.com/PioneerAutoShow"><Facebook/></Link>
+            <Link href="https://www.instagram.com/pioneerautoshow/"><Instagram/></Link>
+            <Link href="https://www.youtube.com/channel/UC1-5hxlGowRFMHr3AJSKv8Q"><Youtube/></Link>
             {navItems.map(({ link }, i) => {
               return <CMSLink className="text-black" key={i} {...link} />
             })}

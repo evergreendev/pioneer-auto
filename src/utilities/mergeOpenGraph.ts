@@ -3,16 +3,16 @@ import type { Metadata } from 'next'
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   description:
-    'Pure Bridal is Rapid City, South Dakota’s premier bridal boutique, offering an exquisite collection of wedding gowns that cater to every bride’s unique style and vision. With a carefully curated selection of designer dresses, exceptional customer service, and a warm, welcoming atmosphere, Pure Bridal ensures every bride’s shopping experience is as magical as the big day itself. Whether you\'re searching for a timeless, elegant look or a modern, fashion-forward gown, their expert consultants are dedicated to helping you find the perfect dress to say "I do" in.',
+    'Offering family fun since 1954, Pioneer Auto Show in Murdo SD is a quintessential South Dakota Attraction along Interstate 90 and Highway 83.',
   images: [
     {
       url: process.env.NEXT_PUBLIC_SERVER_URL
-        ? `${process.env.NEXT_PUBLIC_SERVER_URL}/Pure Bridal Logo Black & Dress-1.png`
-        : '/Pure Bridal Logo Black & Dress-1.png',
+        ? `${process.env.NEXT_PUBLIC_SERVER_URL}/pioneer-auto-show-logo.png`
+        : '/pioneer-auto-show-logo.png',
     },
   ],
-  siteName: 'Pure Bridal',
-  title: 'Pure Bridal',
+  siteName: 'Pioneer Auto Show',
+  title: 'Pioneer Auto Show | South Dakota Attraction | Murdo SD',
 }
 
 export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'] => {
