@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from 'src/utilities/cn'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import { Playball, Roboto_Condensed } from 'next/font/google'
+import { Playball, Roboto_Condensed, Bree_Serif } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -21,6 +21,13 @@ const playball = Playball({
   display: "swap"
 })
 
+const breeSerif = Bree_Serif({
+  subsets:['latin'],
+  weight: ["400"],
+  variable: "--font-bree-serif",
+  display: "swap"
+})
+
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
   weight: ["400", "100", "200", "300", "500", "900"],
@@ -32,7 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable, playball.variable, robotoCondensed.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(GeistSans.variable, GeistMono.variable, breeSerif.variable, playball.variable, robotoCondensed.variable)} lang="en" suppressHydrationWarning>
       <head>
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />

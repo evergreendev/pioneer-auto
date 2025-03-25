@@ -16,10 +16,10 @@ export const HeaderNav: React.FC<{ header: HeaderType, centerNav:boolean }> = ({
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" className="text-2xl uppercase" />
       })}
-      <Link href="/search">
+{/*      <Link href="/search">
         <span className="sr-only">Search</span>
         <SearchIcon className="w-5 text-primary" />
-      </Link>
+      </Link>*/}
     </nav>
   )
 }

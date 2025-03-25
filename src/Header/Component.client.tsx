@@ -18,7 +18,6 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = ({
   header,
   logo,
-  lightLogo,
   centerNav,
 }) => {
   /* Storing the value in a useState to avoid hydration errors */
@@ -46,7 +45,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({
   return (
     <>
       <header
-        className={`hidden md:block sticky transition-colors top-0 z-50 ${!centerNav || hasScrolled ? 'bg-brand-blue text-white border-b border-blue-950' : ''}`}
+        className={`hidden md:block sticky transition-colors top-0 z-50 ${!centerNav || hasScrolled ? 'bg-brand-neutral-700 text-white border-b border-blue-950' : ''}`}
         {...(theme ? { 'data-theme': theme } : {})}
       >
         <div className="container relative z-20 py-2 flex justify-between text-3xl ">
