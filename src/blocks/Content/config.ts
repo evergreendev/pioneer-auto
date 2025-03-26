@@ -82,5 +82,32 @@ export const Content: Block = {
       type: 'array',
       fields: columnFields,
     },
+    {
+      name: 'backgroundStyle',
+      type: 'select',
+      defaultValue: 'light',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+        {
+          label: 'Image',
+          value: 'image',
+        },
+      ],
+    },
+    {
+      name: 'backgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        condition: (_data, siblingData) => siblingData.backgroundStyle === 'image',
+      },
+    },
   ],
 }

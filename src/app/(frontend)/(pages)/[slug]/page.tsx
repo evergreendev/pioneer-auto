@@ -70,7 +70,7 @@ export default async function Page({ params: paramsPromise }: Args) {
             <PayloadRedirects disableNotFound url={url} />
           </div>
           <div className="bg-white/50">
-            <div className="max-w-screen-xl mx-auto w-full p-8">
+            <div className="mx-auto w-full">
               <RenderBlocks blocks={layout} />
             </div>
           </div>

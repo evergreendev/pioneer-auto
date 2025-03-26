@@ -13,7 +13,7 @@ export const ContentBlock: React.FC<
     id?: string
   } & Props
 > = (props) => {
-  const { columns } = props
+  const { columns, backgroundStyle, backgroundImage } = props
 
   const colsSpanClasses = {
     full: '12',
@@ -22,27 +22,51 @@ export const ContentBlock: React.FC<
     twoThirds: '8',
   }
 
+  const backgroundClasses = {
+    default: 'bg-white text-black',
+    dark: 'bg-gray-900 text-white',
+    light: 'bg-gray-50 text-gray-900',
+    image: backgroundImage && typeof backgroundImage !== 'number' ? 'bg-cover bg-center text-white max-h-[70vh] aspect-[1000/500]' : '',
+  }
+
+  const appliedBackgroundClasses = backgroundStyle ? backgroundClasses[backgroundStyle] : backgroundClasses.default
+
   return (
-    <div className="container my-16 p-4">
-      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
-        {columns &&
-          columns.length > 0 &&
-          columns.map((col, index) => {
-            const { enableLink, link, richText, size } = col
+    <div className="my-16">
+      <div
+        style={
+          backgroundStyle === 'image' && backgroundImage && typeof backgroundImage !== 'number'
+            ? { backgroundImage: `url(${backgroundImage.url})` }
+            : {}
+        }
+        className={`w-full relative ${appliedBackgroundClasses} flex items-center`}
+      >
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-2 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
+          {columns &&
+            columns.length > 0 &&
+            columns.map((col, index) => {
+              const { enableLink, link, richText, size } = col
 
-            return (
-              <div
-                className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                  'md:col-span-2': size !== 'full',
-                })}
-                key={index}
-              >
-                {richText && <RichText content={richText} enableGutter={false} />}
+              return (
+                <div
+                  className={cn(
+                    `prose-h3:text-5xl prose-h2:text-7xl prose-h2:mb-2 prose-h2:font-display col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
+                    {
+                      'md:col-span-2': size !== 'full',
+                    },
+                  )}
+                  key={index}
+                >
+                  {richText && <RichText content={richText} enableGutter={false} />}
 
-                {enableLink && <CMSLink {...link} />}
-              </div>
-            )
-          })}
+                  {enableLink && <CMSLink {...link} />}
+                </div>
+              )
+            })}
+        </div>
+        {backgroundStyle === 'image' && (
+          <div className="inset-0 bg-slate-900 absolute opacity-50 z-0"></div>
+        )}
       </div>
     </div>
   )
