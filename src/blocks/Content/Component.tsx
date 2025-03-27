@@ -50,7 +50,7 @@ export const ContentBlock: React.FC<
               return (
                 <div
                   className={cn(
-                    `prose-h3:text-5xl prose-h2:text-7xl prose-h2:mb-2 prose-h3:mb-2 prose-h2:font-display col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
+                    `md:prose-h3:text-5xl md:prose-h2:text-7xl prose-h2:mb-2 prose-h3:mb-2 prose-h2:font-display col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
                     {
                       'md:col-span-2': size !== 'full',
                     },
