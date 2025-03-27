@@ -8,6 +8,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import IFrameBlock from '@/blocks/IFrame/Component'
 import PoppyForm  from '@/blocks/PoppyForm/Component'
 import { LinkBlock } from '@/blocks/LinkBlock/Component'
+import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -16,6 +17,7 @@ const blockComponents = {
   IFrame: IFrameBlock,
   PoppyFormBlock: PoppyForm,
   linkBlock: LinkBlock,
+  imageSlider: ImageSliderBlock
 }
 
 export const RenderBlocks: React.FC<{
@@ -32,12 +34,11 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType] as React.ComponentType<typeof block>
 
             if (Block) {
               return (
                 <div key={index}>
-                  {/* @ts-expect-error */}
                   <Block {...block} />
                 </div>
               )

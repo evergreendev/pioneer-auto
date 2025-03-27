@@ -32,7 +32,7 @@ export const ContentBlock: React.FC<
   const appliedBackgroundClasses = backgroundStyle ? backgroundClasses[backgroundStyle] : backgroundClasses.default
 
   return (
-    <div className="my-16">
+    <div>
       <div
         style={
           backgroundStyle === 'image' && backgroundImage && typeof backgroundImage !== 'number'

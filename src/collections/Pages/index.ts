@@ -19,6 +19,7 @@ import {
 import IFrame from '@/blocks/IFrame/config'
 import { PoppyFormBlock } from '@/blocks/PoppyForm/config'
 import {LinkBlock} from '@/blocks/LinkBlock/config'
+import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/config'
 export const Pages: CollectionConfig = {
   slug: 'pages',
   access: {
@@ -80,7 +81,7 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Content, MediaBlock, IFrame, PoppyFormBlock, LinkBlock],
+              blocks: [Content, MediaBlock, IFrame, PoppyFormBlock, LinkBlock, ImageSliderBlock],
               required: true,
             },
           ],

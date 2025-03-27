@@ -155,6 +155,7 @@ export interface Page {
       }
     | PoppyFormBlock
     | LinkBlock
+    | ImageSliderBlock
   )[];
   meta?: {
     title?: string | null;
@@ -278,6 +279,21 @@ export interface LinkBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'linkBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageSliderBlock".
+ */
+export interface ImageSliderBlock {
+  images?:
+    | {
+        media: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageSlider';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -630,6 +646,7 @@ export interface PagesSelect<T extends boolean = true> {
             };
         PoppyFormBlock?: T | PoppyFormBlockSelect<T>;
         linkBlock?: T | LinkBlockSelect<T>;
+        imageSlider?: T | ImageSliderBlockSelect<T>;
       };
   meta?:
     | T
@@ -720,6 +737,20 @@ export interface LinkBlockSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageSliderBlock_select".
+ */
+export interface ImageSliderBlockSelect<T extends boolean = true> {
+  images?:
+    | T
+    | {
+        media?: T;
         id?: T;
       };
   id?: T;
