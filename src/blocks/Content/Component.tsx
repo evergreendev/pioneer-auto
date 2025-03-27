@@ -26,7 +26,7 @@ export const ContentBlock: React.FC<
     default: 'bg-white text-black',
     dark: 'bg-gray-900 text-white',
     light: 'bg-gray-50 text-gray-900',
-    image: backgroundImage && typeof backgroundImage !== 'number' ? 'bg-cover bg-center text-white max-h-[70vh] aspect-[1000/500]' : '',
+    image: backgroundImage && typeof backgroundImage !== 'number' ? 'bg-cover bg-fixed bg-center text-white max-h-[70vh] aspect-[4/1]' : '',
   }
 
   const appliedBackgroundClasses = backgroundStyle ? backgroundClasses[backgroundStyle] : backgroundClasses.default
