@@ -21,6 +21,21 @@ const Hero = ({ images }: HeroProps) => {
     return () => clearInterval(intervalId.current || '')
   }, [currImage, imageMax])
 
+  if (images[0].image && typeof images[0].image !== 'number' && images[0].image.mimeType === "video/mp4"){
+    return (
+      <video
+        className="w-full h-full object-cover aspect-video max-h-[90vh] object-center"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src={images[0].image.url || ''} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    )
+  }
+
   return (
     <div className="flex flex-wrap w-full">
       <div className="relative aspect-video max-h-[50vh] w-full overflow-hidden">
