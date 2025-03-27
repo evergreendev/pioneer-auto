@@ -41,7 +41,7 @@ export const ContentBlock: React.FC<
         }
         className={`w-full relative ${appliedBackgroundClasses} flex items-center`}
       >
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-2 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-10 gap-x-10 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
@@ -50,7 +50,7 @@ export const ContentBlock: React.FC<
               return (
                 <div
                   className={cn(
-                    `prose-h3:text-5xl prose-h2:text-7xl prose-h2:mb-2 prose-h2:font-display col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
+                    `prose-h3:text-5xl prose-h2:text-7xl prose-h2:mb-2 prose-h3:mb-2 prose-h2:font-display col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
                     {
                       'md:col-span-2': size !== 'full',
                     },
