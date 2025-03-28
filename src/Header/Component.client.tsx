@@ -7,6 +7,8 @@ import { HeaderNav } from './Nav'
 import { MobileNav } from '@/Header/Nav/MobileNav'
 import { Menu,  XCircle} from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
 
 interface HeaderClientProps {
   header: Header
@@ -49,9 +51,16 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({
         {...(theme ? { 'data-theme': theme } : {})}
       >
         <div className="container relative z-20 py-2 flex justify-between text-3xl ">
-{/*          <Link href="/" className={`w-24 ${centerNav ? 'hidden' : ''}`}>
-            <Logo logo={logo} lightLogo={lightLogo} theme={headerTheme} />
-          </Link>*/}
+          <Link href="/" className={`w-24 ${centerNav ? 'hidden' : ''}`}>
+            <Image
+              src={logo.url || ''}
+              alt={logo.alt || 'Logo'}
+              width={96}
+              height={48}
+              priority
+              className="h-auto"
+            />
+          </Link>
           <HeaderNav header={header} centerNav={centerNav} />
         </div>
       </header>
@@ -60,10 +69,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({
           onClick={() => setMobileNavIsOpen(!mobileNavIsOpen)}
           className="fixed z-50 top-4 right-4"
         >
-          {mobileNavIsOpen ?
-            <XCircle className="w-5 text-primary"/>
-           : <Menu className="w-5 text-primary" />
-          }
+          {mobileNavIsOpen ? (
+            <XCircle className="w-5 text-primary" />
+          ) : (
+            <Menu className="w-5 text-primary" />
+          )}
         </button>
         <div
           className={`fixed transition-transform inset-0 bg-brand-blue z-40 bg-opacity-95 ${mobileNavIsOpen ? '' : '-translate-x-full'}`}
