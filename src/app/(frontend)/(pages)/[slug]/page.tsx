@@ -68,7 +68,7 @@ export default async function Page({ params: paramsPromise }: Args) {
           <div className="hidden md:block z-50 bg-brand-primary-500 text-white border-b border-blue-950">
             <div className="container max-w-screen-lg p-2 flex flex-wrap justify-between items-center">
               <div className="flex flex-col items-center">
-                <h2 className="font-display text-2xl">As seen on</h2>
+                <h2 className="font-display text-4xl">As seen on</h2>
                 <Image src="/american-pickers.jpg" width={120} height={120} alt="American Pickers" />
               </div>
               <div className="flex flex-col items-center">
