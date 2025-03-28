@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
 import { Page } from '@/payload-types'
 import LightBox from '@/components/LightBox'
+import ClickWithThreshold from '@/components/ClickWithThresholdComponent'
 
 type Props = Extract<Page['layout'][0], { blockType: 'imageSlider' }>
 
@@ -27,7 +28,7 @@ export const ImageSliderBlock: React.FC<Props> = (props) => {
     arrows: false,
     autoplay: true,
     infinite: true,
-    draggable: false,
+    draggable: true,
     autoplaySpeed: 5000,
     speed: 700,
     slidesToShow: Math.min(Math.ceil(screenWidth / 600), images.length),
@@ -37,28 +38,27 @@ export const ImageSliderBlock: React.FC<Props> = (props) => {
 
   return (
     <div className="bg-brand-neutral-700">
-      {
-        openImageId &&
+      {openImageId && (
         <LightBox
           isOpen={!!openImageId}
-          img={images.find(img => img.id === openImageId)?.media}
+          img={images.find((img) => img.id === openImageId)?.media}
           closeFunction={() => setOpenImageId(null)}
         />
-      }
+      )}
 
       <Slider {...sliderSettings}>
         {images.map((img) => {
           if (!img.media || typeof img.media === 'number') return null
           return (
+            <ClickWithThreshold key={img.id} onClick={() => setOpenImageId(img.id)} threshold={40}>
               <Image
-                onClick={() => setOpenImageId(img.id)}
                 className="aspect-square object-cover object-center"
                 src={img.media.url || ''}
                 alt={img.media.alt || ''}
                 width={img.media.width || 0}
                 height={img.media.height || 0}
-                key={img.id}
               />
+            </ClickWithThreshold>
           )
         })}
       </Slider>
