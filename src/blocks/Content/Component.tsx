@@ -24,8 +24,8 @@ export const ContentBlock: React.FC<
 
   const backgroundClasses = {
     default: 'bg-white text-black',
-    dark: 'bg-gray-900 text-white',
-    light: 'bg-gray-50 text-gray-900',
+    dark: 'bg-brand-neutral-500 text-white',
+    light: 'bg-brand-neutral-50 text-gray-900',
     image: backgroundImage && typeof backgroundImage !== 'number' ? 'bg-cover bg-fixed bg-center text-white max-h-[70vh] aspect-[4/1]' : '',
   }
 
@@ -41,7 +41,7 @@ export const ContentBlock: React.FC<
         }
         className={`w-full relative ${appliedBackgroundClasses} flex items-center`}
       >
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-10 gap-x-10 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
+        <div className="grid  grid-cols-4 lg:grid-cols-12 gap-y-10 gap-x-10 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
