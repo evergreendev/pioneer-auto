@@ -14,6 +14,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    testimonials: Testimonial;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -26,6 +27,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -156,6 +158,17 @@ export interface Page {
     | PoppyFormBlock
     | LinkBlock
     | ImageSliderBlock
+    | {
+        heading?: string | null;
+        displayType?: ('count' | 'specific') | null;
+        testimonialsCount?: number | null;
+        selectedTestimonials?: (number | Testimonial)[] | null;
+        showAsCarousel?: boolean | null;
+        backgroundColor?: ('white' | 'lightGray' | 'brandPrimary') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'testimonialsBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -294,6 +307,31 @@ export interface ImageSliderBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'imageSlider';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  testimonial: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  name: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -526,6 +564,10 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -647,6 +689,18 @@ export interface PagesSelect<T extends boolean = true> {
         PoppyFormBlock?: T | PoppyFormBlockSelect<T>;
         linkBlock?: T | LinkBlockSelect<T>;
         imageSlider?: T | ImageSliderBlockSelect<T>;
+        testimonialsBlock?:
+          | T
+          | {
+              heading?: T;
+              displayType?: T;
+              testimonialsCount?: T;
+              selectedTestimonials?: T;
+              showAsCarousel?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -755,6 +809,16 @@ export interface ImageSliderBlockSelect<T extends boolean = true> {
       };
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  testimonial?: T;
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

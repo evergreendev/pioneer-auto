@@ -4,6 +4,7 @@ import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { Content } from '@/blocks/Content/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { TestimonialBlock } from '@/blocks/Testimonials/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -81,7 +82,7 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Content, MediaBlock, IFrame, PoppyFormBlock, LinkBlock, ImageSliderBlock],
+              blocks: [Content, MediaBlock, IFrame, PoppyFormBlock, LinkBlock, ImageSliderBlock, TestimonialBlock],
               required: true,
             },
           ],
