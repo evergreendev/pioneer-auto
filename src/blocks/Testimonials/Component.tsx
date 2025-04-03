@@ -3,6 +3,8 @@ import RichText from '@/components/RichText'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import TestimonialsSliderWrapper from './TestimonialsSliderWrapper'
+import { Testimonial } from '@/payload-types'
+import testimonials from '@/collections/Testimonials'
 
 // Define props type
 type TestimonialsBlockProps = {
@@ -10,7 +12,7 @@ type TestimonialsBlockProps = {
   heading?: string
   displayType: 'count' | 'specific'
   testimonialsCount?: number
-  selectedTestimonials?: Array<{ id: string }>
+  selectedTestimonials?: Array<{ id: number }>
   showAsCarousel: boolean
   backgroundColor: 'white' | 'lightGray' | 'brandPrimary'
 }
@@ -19,8 +21,8 @@ type TestimonialsBlockProps = {
 const fetchTestimonials = async (
   displayType: string,
   testimonialsCount: number,
-  selectedTestimonials: Array<{ id: string }> = [],
-) => {
+  selectedTestimonials: Array<{ id: number }> = [],
+):Promise<Testimonial[]> => {
   const payload = await getPayload({ config })
 
   try {
@@ -44,9 +46,9 @@ const fetchTestimonials = async (
 
       const orderedTestimonials = ids
         .map((id) => response.docs.find((doc) => doc.id === id))
-        .filter(Boolean)
+        .filter(doc => doc);
 
-      return orderedTestimonials || []
+      return orderedTestimonials as Testimonial[] || []
     }
     return []
   } catch (error) {
@@ -73,6 +75,12 @@ const TestimonialsBlockComponent = async (props: TestimonialsBlockProps) => {
     lightGray: 'bg-gray-100',
     brandPrimary: 'bg-brand-primary-600',
   }[backgroundColor]
+
+  if (!testimonials) return (
+    <div>
+      <p>No testimonials found.</p>
+    </div>
+  )
 
   return (
     <section className={`py-16 ${bgColorClass}`}>
