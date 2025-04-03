@@ -30,7 +30,7 @@ const TestimonialsSlider = ({ testimonials }: TestimonialSliderProps) => {
             <div className="mb-4">
               <RichText content={testimonial.testimonial} />
             </div>
-            <p className="font-bold text-lg">— {testimonial.name}</p>
+            <p className="font-bold text-lg text-center">— {testimonial.name}</p>
           </div>
         </div>
       ))}
