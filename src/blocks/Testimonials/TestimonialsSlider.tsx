@@ -26,7 +26,7 @@ const TestimonialsSlider = ({ testimonials }: TestimonialSliderProps) => {
     <Slider {...sliderSettings}>
       {testimonials.map((testimonial) => (
         <div key={testimonial.id} className="px-4">
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
             <div className="mb-4">
               <RichText content={testimonial.testimonial} />
             </div>
