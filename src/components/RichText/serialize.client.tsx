@@ -2,9 +2,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { FormBlock, FormBlockType } from '@/blocks/Form/Component'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/Link'
-import { ContentBlock } from '@/blocks/Content/Component'
 import { LinkBlock } from '@/blocks/LinkBlock/Component'
-import  Hours from '@/blocks/HoursBlock/HoursBlockComponent'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
 
 import {
@@ -17,6 +15,7 @@ import {
   IS_UNDERLINE,
 } from './nodeFormat'
 import type { Page } from '@/payload-types'
+import { ContentBlockClient } from '@/blocks/Content/Component.client'
 
 const alignment: Partial<Record<string, string>> = {
   center: "md:text-center text-left",
@@ -28,20 +27,19 @@ const alignment: Partial<Record<string, string>> = {
 export type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      | Extract<Page['layout'][0], { blockType: 'cta' }>
-      | Extract<Page['layout'][0], { blockType: 'mediaBlock' }>
-      | Extract<Page['layout'][0], { blockType: 'content' }>
+  | Extract<Page['layout'][0], { blockType: 'cta' }>
+  | Extract<Page['layout'][0], { blockType: 'mediaBlock' }>
+  | Extract<Page['layout'][0], { blockType: 'content' }>
   | Extract<Page['layout'][0], {blockType: 'linkBlock'}>
   | FormBlockType
   | Extract<Page['layout'][0], { blockType: 'IFrame' }>
-  | Extract<Page['layout'][0], { blockType: 'hoursBlock' }>
-    >
+>
 
 type Props = {
   nodes: NodeTypes[]
 }
 
-export function serializeLexical({ nodes }: Props): JSX.Element {
+export function serializeLexicalClient({ nodes }: Props): JSX.Element {
   return (
     <Fragment>
       {nodes?.map((node, index): JSX.Element | null => {
@@ -100,7 +98,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 }
               }
             }
-            return serializeLexical({ nodes: node.children as NodeTypes[] })
+            return serializeLexicalClient({ nodes: node.children as NodeTypes[] })
           }
         }
 
@@ -117,9 +115,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
           switch (blockType) {
             case 'content':
-              return <ContentBlock key={index} {...block} />
-            case 'hoursBlock':
-              return <Hours key={index} {...block} />
+              return <ContentBlockClient key={index} {...block} />
             case 'linkBlock':
               return <LinkBlock key={index} {...block} />
             case 'mediaBlock':

@@ -9,7 +9,7 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import cssVariables from '@/cssVariables'
-import RichText from '@/components/RichText'
+import RichTextClient from '@/components/RichText/index.client'
 
 const { breakpoints } = cssVariables
 
@@ -25,8 +25,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     size: sizeFromProps,
     src: srcFromProps,
   } = props
-
-  const [isLoading, setIsLoading] = React.useState(true)
 
   let width: number | undefined
   let height: number | undefined
@@ -79,7 +77,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         height={!fill ? height : undefined}
         onClick={onClick}
         onLoad={() => {
-          setIsLoading(false)
           if (typeof onLoadFromProps === 'function') {
             onLoadFromProps()
           }
@@ -91,7 +88,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         width={!fill ? width : undefined}
       />
       {caption ? (
-        <RichText
+        <RichTextClient
           className={cn(imgClassName)+' mb-0 text-white bg-opacity-5 bg-black absolute bottom-0 p-1 right-0'}
           content={caption}
           enableGutter={false}

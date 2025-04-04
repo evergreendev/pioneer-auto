@@ -10,6 +10,7 @@ import PoppyForm  from '@/blocks/PoppyForm/Component'
 import { LinkBlock } from '@/blocks/LinkBlock/Component'
 import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/Component'
 import TestimonialsBlockComponent from '@/blocks/Testimonials/Component'
+import Hours from '@/blocks/HoursBlock/HoursBlockComponent'
 
 const blockComponents = {
   content: ContentBlock,
@@ -19,7 +20,8 @@ const blockComponents = {
   PoppyFormBlock: PoppyForm,
   linkBlock: LinkBlock,
   imageSlider: ImageSliderBlock,
-  testimonialsBlock: TestimonialsBlockComponent
+  testimonialsBlock: TestimonialsBlockComponent,
+  hoursBlock: Hours,
 }
 
 export const RenderBlocks: React.FC<{

@@ -5,6 +5,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { Content } from '@/blocks/Content/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { TestimonialBlock } from '@/blocks/Testimonials/config'
+import { HoursBlock } from '@/blocks/HoursBlock/HoursBlockConfig'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -19,8 +20,9 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import IFrame from '@/blocks/IFrame/config'
 import { PoppyFormBlock } from '@/blocks/PoppyForm/config'
-import {LinkBlock} from '@/blocks/LinkBlock/config'
+import { LinkBlock } from '@/blocks/LinkBlock/config'
 import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/config'
+
 export const Pages: CollectionConfig = {
   slug: 'pages',
   access: {
@@ -70,10 +72,9 @@ export const Pages: CollectionConfig = {
                   name: 'image',
                   type: 'upload',
                   relationTo: 'media',
-                }
-              ]
-
-            }
+                },
+              ],
+            },
           ],
           label: 'Hero',
         },
@@ -82,7 +83,16 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Content, MediaBlock, IFrame, PoppyFormBlock, LinkBlock, ImageSliderBlock, TestimonialBlock],
+              blocks: [
+                Content,
+                MediaBlock,
+                IFrame,
+                PoppyFormBlock,
+                LinkBlock,
+                ImageSliderBlock,
+                TestimonialBlock,
+                HoursBlock,
+              ],
               required: true,
             },
           ],

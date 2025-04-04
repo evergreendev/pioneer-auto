@@ -2,10 +2,10 @@
 
 import React from 'react'
 import Slider from 'react-slick'
-import RichText from '@/components/RichText'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Testimonial } from '@/payload-types'
+import RichTextClient from '@/components/RichText/index.client'
 
 type TestimonialSliderProps = {
   testimonials: Testimonial[]
@@ -28,7 +28,7 @@ const TestimonialsSlider = ({ testimonials }: TestimonialSliderProps) => {
         <div key={testimonial.id} className="px-4">
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <div className="mb-4">
-              <RichText content={testimonial.testimonial} />
+              <RichTextClient content={testimonial.testimonial} />
             </div>
             <p className="font-bold text-lg text-center">— {testimonial.name}</p>
           </div>
