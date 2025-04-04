@@ -84,7 +84,7 @@ const TestimonialsBlockComponent = async (props: TestimonialsBlockProps) => {
 
   return (
     <section className={`py-16 ${bgColorClass}`}>
-      <div className="container mx-auto px-4 max-w-screen-xl">
+      <div className="container mx-auto px-8 max-w-screen-xl">
         {heading && (
           <h2
             className={`text-3xl font-bold text-center mb-12 font-display ${backgroundColor === 'brandPrimary' ? 'text-white' : ''}`}
