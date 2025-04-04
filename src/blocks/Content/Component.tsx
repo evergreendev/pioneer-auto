@@ -26,10 +26,16 @@ export const ContentBlock: React.FC<
     default: 'bg-white text-black',
     dark: 'bg-brand-neutral-500 text-white',
     light: 'bg-brand-neutral-50 text-gray-900',
-    image: backgroundImage && typeof backgroundImage !== 'number' ? 'bg-cover bg-fixed bg-center text-white max-h-[70vh] aspect-[4/1]' : '',
+    image:
+      backgroundImage && typeof backgroundImage !== 'number'
+        ? 'bg-cover bg-fixed bg-center text-white max-h-[70vh] aspect-[4/1]'
+        : '',
+    none: '',
   }
 
-  const appliedBackgroundClasses = backgroundStyle ? backgroundClasses[backgroundStyle] : backgroundClasses.default
+  const appliedBackgroundClasses = backgroundStyle
+    ? backgroundClasses[backgroundStyle]
+    : backgroundClasses.default
 
   return (
     <div>
@@ -50,7 +56,11 @@ export const ContentBlock: React.FC<
               return (
                 <div
                   className={cn(
-                    `md:prose-h3:text-5xl md:prose-h4:text-2xl md:prose-h2:text-7xl prose-h2:mb-2 prose-h3:mb-2 prose-h2:font-display col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
+                    `md:prose-h3:text-5xl md:prose-h4:text-2xl md:prose-h2:text-7xl prose-h2:mb-2 
+                    prose-h3:mb-2 prose-h2:font-display col-span-4 
+                    lg:col-span-${colsSpanClasses[size!]}
+                    ${backgroundStyle === 'none' ? 'md:prose-h2:text-3xl prose-p:m-0' : ''}
+                    `,
                     {
                       'md:col-span-2': size !== 'full',
                     },

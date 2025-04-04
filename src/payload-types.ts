@@ -15,6 +15,7 @@ export interface Config {
     media: Media;
     pages: Page;
     testimonials: Testimonial;
+    hours: Hour;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -28,6 +29,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    hours: HoursSelect<false> | HoursSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -226,7 +228,7 @@ export interface ContentBlock {
         id?: string | null;
       }[]
     | null;
-  backgroundStyle?: ('light' | 'dark' | 'image') | null;
+  backgroundStyle?: ('light' | 'none' | 'dark' | 'image') | null;
   backgroundImage?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
@@ -330,6 +332,53 @@ export interface Testimonial {
     [k: string]: unknown;
   };
   name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hours".
+ */
+export interface Hour {
+  id: number;
+  /**
+   * A descriptive label for this hours entry (e.g., "Summer Hours", "Holiday Hours")
+   */
+  label: string;
+  /**
+   * Select the start date
+   */
+  hoursStart: string;
+  /**
+   * Select the end date
+   */
+  hoursEnd: string;
+  /**
+   * The detailed information about these hours
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Check this to make these hours visible on the site
+   */
+  isActive?: boolean | null;
+  /**
+   * Lower numbers appear first
+   */
+  sortOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -566,6 +615,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'hours';
+        value: number | Hour;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -822,6 +875,20 @@ export interface TestimonialsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hours_select".
+ */
+export interface HoursSelect<T extends boolean = true> {
+  label?: T;
+  hoursStart?: T;
+  hoursEnd?: T;
+  content?: T;
+  isActive?: T;
+  sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -1061,6 +1128,39 @@ export interface Header {
  */
 export interface Footer {
   id: number;
+  content?:
+    | (
+        | ContentBlock
+        | MediaBlock
+        | {
+            containerStyle?: string | null;
+            fields?:
+              | {
+                  property: string;
+                  value?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'IFrame';
+          }
+        | PoppyFormBlock
+        | LinkBlock
+        | ImageSliderBlock
+        | {
+            heading?: string | null;
+            displayType?: ('count' | 'specific') | null;
+            testimonialsCount?: number | null;
+            selectedTestimonials?: (number | Testimonial)[] | null;
+            showAsCarousel?: boolean | null;
+            backgroundColor?: ('white' | 'lightGray' | 'brandPrimary') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialsBlock';
+          }
+      )[]
+    | null;
   navItems?:
     | {
         link: {
@@ -1148,6 +1248,41 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  content?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+        IFrame?:
+          | T
+          | {
+              containerStyle?: T;
+              fields?:
+                | T
+                | {
+                    property?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        PoppyFormBlock?: T | PoppyFormBlockSelect<T>;
+        linkBlock?: T | LinkBlockSelect<T>;
+        imageSlider?: T | ImageSliderBlockSelect<T>;
+        testimonialsBlock?:
+          | T
+          | {
+              heading?: T;
+              displayType?: T;
+              testimonialsCount?: T;
+              selectedTestimonials?: T;
+              showAsCarousel?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   navItems?:
     | T
     | {

@@ -92,6 +92,10 @@ export const Content: Block = {
           value: 'light',
         },
         {
+          label: 'None',
+          value: 'none',
+        },
+        {
           label: 'Dark',
           value: 'dark',
         },
