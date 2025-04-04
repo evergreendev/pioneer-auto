@@ -1,4 +1,14 @@
 import { CollectionConfig } from 'payload';
+import {
+  AlignFeature,
+  BlocksFeature, FixedToolbarFeature,
+  HeadingFeature, HorizontalRuleFeature, InlineToolbarFeature,
+  lexicalEditor, OrderedListFeature,
+  ParagraphFeature, UnorderedListFeature,
+} from '@payloadcms/richtext-lexical'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { FormBlock } from '@/blocks/Form/config'
+import { LinkBlock } from '@/blocks/LinkBlock/config'
 
 // Define the Hours collection
 const Hours: CollectionConfig = {
@@ -28,7 +38,7 @@ const Hours: CollectionConfig = {
       admin: {
         date: {
           pickerAppearance: 'dayOnly',
-          displayFormat: 'MM/DD',
+          displayFormat: 'd MMM yyy',
         },
         description: 'Select the start date',
       },
@@ -41,7 +51,7 @@ const Hours: CollectionConfig = {
       admin: {
         date: {
           pickerAppearance: 'dayOnly',
-          displayFormat: 'MM/DD',
+          displayFormat: 'd MMM yyy',
         },
         description: 'Select the end date',
       },
@@ -51,6 +61,23 @@ const Hours: CollectionConfig = {
       type: 'richText',
       label: 'Content',
       required: true,
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            AlignFeature(),
+            ParagraphFeature(),
+            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+            BlocksFeature({ blocks: [MediaBlock, FormBlock, LinkBlock] }),
+            OrderedListFeature(),
+            UnorderedListFeature(),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+            HorizontalRuleFeature(),
+            AlignFeature(),
+          ]
+        },
+      }),
       admin: {
         description: 'The detailed information about these hours',
       },
