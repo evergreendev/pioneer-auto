@@ -24,6 +24,20 @@ type Link = {
 const SubMenu = ({ subItems }: { subItems: { id: string; link: Link }[] }) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   return (
     <div className="relative">
       <button
