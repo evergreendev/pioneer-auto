@@ -9,7 +9,7 @@ export const HoursBlock: Block = {
   },
   fields: [
     {
-      name: 'displayType',
+      name: 'type',
       label: 'Display Type',
       type: 'radio',
       options: [
@@ -36,7 +36,7 @@ export const HoursBlock: Block = {
       max: 20,
       defaultValue: 5,
       admin: {
-        condition: (data, siblingData) => siblingData?.displayType === 'future',
+        condition: (data, siblingData) => siblingData?.type === 'future',
         description: 'Maximum number of future hours to display',
       },
     },

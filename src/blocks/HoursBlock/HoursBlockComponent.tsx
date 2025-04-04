@@ -77,14 +77,14 @@ const HoursBlockComponent = async (
     id?: string
   } & Props,
 ) => {
-  const { displayType, maxHoursToShow = 5 } = props
+  const { type, maxHoursToShow = 5 } = props
 
   let hours: Hour[] = []
 
-  if (displayType === 'current') {
+  if (type === 'current') {
     const hour = await fetchCurrentHour()
     if (hour) hours = [hour.docs[0]]
-  } else if (displayType === 'future') {
+  } else if (type === 'future') {
     hours = await fetchFutureHours(maxHoursToShow || 5)
   }
 
@@ -94,7 +94,7 @@ const HoursBlockComponent = async (
         <div className="space-y-8 not-prose">
           {hours.map((hour) => (
             <div key={hour.id}>
-              {displayType === "current" ? <h3 className="text-3xl font-bold font-display mb-2">Today&#39;s Hours</h3> : <h3 className="text-2xl font-display mb-2">{hour.label}</h3>}
+              {type === "current" ? <h3 className="text-3xl font-bold font-display mb-2">Today&#39;s Hours</h3> : <h3 className="text-2xl font-display mb-2">{hour.label}</h3>}
               <div className="max-w-none">
                 <RichText enableGutter={false} enableProse={false} content={hour.content} />
               </div>
