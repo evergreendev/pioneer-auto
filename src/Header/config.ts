@@ -16,6 +16,15 @@ export const Header: GlobalConfig = {
         link({
           appearances: false,
         }),
+        {
+          name: "subItems",
+          type: "array",
+          fields: [
+            link({
+              appearances: false,
+            })
+          ]
+        }
       ],
       maxRows: 8,
     },
