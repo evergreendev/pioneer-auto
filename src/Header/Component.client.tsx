@@ -96,7 +96,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({
           )}
         </button>
         <div
-          className={`fixed transition-transform inset-0 bg-brand-blue z-40 bg-opacity-95 ${mobileNavIsOpen ? '' : '-translate-x-full'}`}
+          className={`fixed transition-transform inset-0 bg-brand-neutral-700 z-40 bg-opacity-95 ${mobileNavIsOpen ? '' : '-translate-x-full'}`}
         >
           <MobileNav header={header} />
         </div>
