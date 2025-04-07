@@ -91,7 +91,7 @@ const HoursBlockComponent = async (
   return (
     <div>
       {hours.length > 0 ? (
-        <div className="space-y-8 not-prose">
+        <div className="gap-2 not-prose flex flex-wrap justify-around items-start p-2">
           {hours.map((hour) => (
             <div key={hour.id}>
               {type === "current" ? <h3 className="text-3xl font-bold font-display mb-2">Today&#39;s Hours</h3> : <h3 className="text-2xl font-display mb-2">{hour.label}</h3>}
