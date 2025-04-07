@@ -52,7 +52,7 @@ const SubMenu = ({ subItems }: { subItems: { id: string; link: Link }[] }) => {
         <ul className="absolute bg-brand-neutral-700 shadow-md right-0">
           {subItems.map((item) => (
             <li key={item.id} className="p-2">
-              <CMSLink {...item.link} appearance="link" className="text-xl" />
+              <CMSLink {...item.link} appearance="link" className="text-xl w-full" />
             </li>
           ))}
         </ul>
@@ -76,7 +76,7 @@ export const HeaderNav: React.FC<{ header: HeaderType; centerNav: boolean }> = (
   const navItems = header?.navItems || []
 
   return (
-    <nav className="flex gap-3 items-center mx-auto">
+    <nav className="flex gap-8 mx-auto">
       {navItems.map(({ link, subItems }, i) => {
         // @ts-ignore
         return <NavItem key={i} link={link} subItems={subItems} />
