@@ -171,6 +171,16 @@ export interface Page {
         blockName?: string | null;
         blockType: 'testimonialsBlock';
       }
+    | {
+        type: 'current' | 'future';
+        /**
+         * Maximum number of future hours to display
+         */
+        maxHoursToShow?: number | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'hoursBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -751,6 +761,14 @@ export interface PagesSelect<T extends boolean = true> {
               selectedTestimonials?: T;
               showAsCarousel?: T;
               backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        hoursBlock?:
+          | T
+          | {
+              type?: T;
+              maxHoursToShow?: T;
               id?: T;
               blockName?: T;
             };
