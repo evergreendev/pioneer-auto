@@ -37,6 +37,8 @@ export const ContentBlock: React.FC<
     ? backgroundClasses[backgroundStyle]
     : backgroundClasses.default
 
+
+
   return (
     <div>
       <div
@@ -52,7 +54,6 @@ export const ContentBlock: React.FC<
             columns.length > 0 &&
             columns.map((col, index) => {
               const { enableLink, link, richText, size } = col
-
               return (
                 <div
                   className={cn(
@@ -69,7 +70,7 @@ export const ContentBlock: React.FC<
                 >
                   {richText && <RichText content={richText} enableGutter={false} />}
 
-                  {enableLink && <CMSLink {...link} />}
+                  {enableLink && <CMSLink className={"mx-auto flex"} {...link} />}
                 </div>
               )
             })}
