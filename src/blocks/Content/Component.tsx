@@ -49,7 +49,7 @@ export const ContentBlock: React.FC<
         }
         className={`w-full relative ${appliedBackgroundClasses} flex items-center`}
       >
-        <div className="grid  grid-cols-4 lg:grid-cols-12 gap-y-10 gap-x-10 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
+        <div className="grid place-items-center grid-cols-4 lg:grid-cols-12 gap-y-10 gap-x-10 p-8  w-full max-w-screen-xl mx-auto z-10 relative">
           {columns &&
             columns.length > 0 &&
             columns.map((col, index) => {
