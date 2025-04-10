@@ -52,7 +52,7 @@ export const ImageSliderBlock: React.FC<Props> = (props) => {
           return (
             <ClickWithThreshold key={img.id} onClick={() => setOpenImageId(img.id)} threshold={40}>
               <Image
-                className="aspect-square object-cover object-center"
+                className="aspect-square object-cover object-center w-full"
                 src={img.media.url || ''}
                 alt={img.media.alt || ''}
                 width={img.media.width || 0}
