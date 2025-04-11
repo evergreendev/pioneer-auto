@@ -36,7 +36,7 @@ export const LettersBlock: Block = {
       type: 'number',
       label: 'Number of letters to display',
       min: 1,
-      max: 10,
+      max: 50,
       defaultValue: 3,
       admin: {
         condition: (data, siblingData) => siblingData.displayType === 'count',
