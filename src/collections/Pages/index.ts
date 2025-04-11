@@ -22,6 +22,7 @@ import IFrame from '@/blocks/IFrame/config'
 import { PoppyFormBlock } from '@/blocks/PoppyForm/config'
 import { LinkBlock } from '@/blocks/LinkBlock/config'
 import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/config'
+import { LettersBlock } from '@/blocks/Letters/LettersBlockConfig'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -92,6 +93,7 @@ export const Pages: CollectionConfig = {
                 ImageSliderBlock,
                 TestimonialBlock,
                 HoursBlock,
+                LettersBlock,
               ],
               required: true,
             },

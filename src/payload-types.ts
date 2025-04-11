@@ -16,6 +16,7 @@ export interface Config {
     pages: Page;
     testimonials: Testimonial;
     hours: Hour;
+    letters: Letter;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -30,6 +31,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     hours: HoursSelect<false> | HoursSelect<true>;
+    letters: LettersSelect<false> | LettersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -180,6 +182,16 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'hoursBlock';
+      }
+    | {
+        heading?: string | null;
+        displayType?: ('count' | 'specific') | null;
+        lettersCount?: number | null;
+        selectedLetters?: (number | Letter)[] | null;
+        backgroundColor?: ('white' | 'lightGray' | 'brandPrimary') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'lettersBlock';
       }
   )[];
   meta?: {
@@ -342,6 +354,33 @@ export interface Testimonial {
     [k: string]: unknown;
   };
   name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "letters".
+ */
+export interface Letter {
+  id: number;
+  senderName: string;
+  date?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -631,6 +670,10 @@ export interface PayloadLockedDocument {
         value: number | Hour;
       } | null)
     | ({
+        relationTo: 'letters';
+        value: number | Letter;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -772,6 +815,17 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        lettersBlock?:
+          | T
+          | {
+              heading?: T;
+              displayType?: T;
+              lettersCount?: T;
+              selectedLetters?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -902,6 +956,18 @@ export interface HoursSelect<T extends boolean = true> {
   content?: T;
   isActive?: T;
   sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "letters_select".
+ */
+export interface LettersSelect<T extends boolean = true> {
+  senderName?: T;
+  date?: T;
+  content?: T;
+  featured?: T;
   updatedAt?: T;
   createdAt?: T;
 }

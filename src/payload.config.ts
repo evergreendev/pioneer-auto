@@ -31,6 +31,7 @@ import { SiteOptions } from '@/SiteOptions/config'
 import { Footer } from '@/Footer/config'
 import { Header } from '@/Header/config'
 import Testimonials from '@/collections/Testimonials'
+import { Letters } from '@/collections/LettersCollectionConfig'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -60,7 +61,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,Pages, Testimonials, Hours],
+  collections: [Users, Media,Pages, Testimonials, Hours, Letters],
   globals: [Header, Footer, SiteOptions],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
