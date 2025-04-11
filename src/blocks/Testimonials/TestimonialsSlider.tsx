@@ -24,18 +24,20 @@ const TestimonialsSlider = ({ testimonials }: TestimonialSliderProps) => {
   }
 
   return (
-    <Slider {...sliderSettings}>
-      {testimonials.map((testimonial) => (
-        <div key={testimonial.id} className="px-4">
-          <div className="bg-white p-8 rounded-lg shadow-lg">
-            <div className="mb-4">
-              <RichTextClient content={testimonial.testimonial} />
+    <div className="testimony-slider">
+      <Slider {...sliderSettings}>
+        {testimonials.map((testimonial) => (
+          <div key={testimonial.id} className="px-4">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <div className="mb-4">
+                <RichTextClient content={testimonial.testimonial} />
+              </div>
+              <p className="font-bold text-lg text-center">— {testimonial.name}</p>
             </div>
-            <p className="font-bold text-lg text-center">— {testimonial.name}</p>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </Slider>
+    </div>
   )
 }
 

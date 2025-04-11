@@ -4,7 +4,6 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import TestimonialsSliderWrapper from './TestimonialsSliderWrapper'
 import { Testimonial } from '@/payload-types'
-import testimonials from '@/collections/Testimonials'
 
 // Define props type
 type TestimonialsBlockProps = {

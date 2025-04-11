@@ -1,4 +1,4 @@
-.slick-slide > div {
+.testimony-slider .slick-slide > div {
     display: grid;
     place-items: center;
     width: 80%;
