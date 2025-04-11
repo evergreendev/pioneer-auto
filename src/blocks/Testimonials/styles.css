@@ -1,0 +1,8 @@
+.slick-slide > div {
+    display: grid;
+    place-items: center;
+    width: 80%;
+    margin: auto;
+    height: 500px;
+    padding: 0;
+}
