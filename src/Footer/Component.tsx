@@ -8,6 +8,7 @@ import type { Footer, SiteOption } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import FooterBookingButton from '@/components/FooterBookingButton'
 
 export async function Footer() {
   const footer: Footer = await getCachedGlobal('footer', 1)()
@@ -61,6 +62,7 @@ export async function Footer() {
             <Link href="https://www.tripadvisor.com/Attraction_Review-g54726-d277934-Reviews-Pioneer_Auto_Museum-Murdo_South_Dakota.html">
               <Image src="/tripadvisor.png" alt="Trip Advisor" width={60} height={60} />
             </Link>
+            <FooterBookingButton />
           </nav>
         </div>
       </div>
