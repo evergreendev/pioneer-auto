@@ -23,6 +23,7 @@ import { PoppyFormBlock } from '@/blocks/PoppyForm/config'
 import { LinkBlock } from '@/blocks/LinkBlock/config'
 import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/config'
 import { LettersBlock } from '@/blocks/Letters/LettersBlockConfig'
+import { BookingButtonBlock } from '@/blocks/BookingButton/config'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -94,6 +95,7 @@ export const Pages: CollectionConfig = {
                 TestimonialBlock,
                 HoursBlock,
                 LettersBlock,
+                BookingButtonBlock,
               ],
               required: true,
             },

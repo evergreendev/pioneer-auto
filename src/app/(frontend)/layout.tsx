@@ -11,8 +11,8 @@ import { Footer } from '@/Footer/Component'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
-import {GoogleAnalytics} from '@next/third-parties/google'
 import './globals.css'
+import Script from 'next/script'
 
 const playball = Playball({
   subsets:['latin'],
@@ -53,6 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <LivePreviewListener />
           {children}
           <Footer />
+          <Script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"/>
       </body>
     {/*<GoogleAnalytics gaId="G-7KBVJ8N50K"/>*/}
     </html>

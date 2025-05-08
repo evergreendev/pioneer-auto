@@ -12,6 +12,7 @@ import { ImageSliderBlock } from '@/blocks/ImageSliderBlock/Component'
 import TestimonialsBlockComponent from '@/blocks/Testimonials/Component'
 import Hours from '@/blocks/HoursBlock/HoursBlockComponent'
 import Letters from '@/blocks/Letters/Component'
+import BookingButton from '@/blocks/BookingButton/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -23,7 +24,8 @@ const blockComponents = {
   imageSlider: ImageSliderBlock,
   testimonialsBlock: TestimonialsBlockComponent,
   hoursBlock: Hours,
-  lettersBlock: Letters
+  lettersBlock: Letters,
+  bookingButton: BookingButton
 }
 
 export const RenderBlocks: React.FC<{

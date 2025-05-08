@@ -193,6 +193,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'lettersBlock';
       }
+    | BookingButton
   )[];
   meta?: {
     title?: string | null;
@@ -383,6 +384,15 @@ export interface Letter {
   featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bookingButton".
+ */
+export interface BookingButton {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'bookingButton';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -826,6 +836,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        bookingButton?: T | BookingButtonSelect<T>;
       };
   meta?:
     | T
@@ -932,6 +943,14 @@ export interface ImageSliderBlockSelect<T extends boolean = true> {
         media?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bookingButton_select".
+ */
+export interface BookingButtonSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
