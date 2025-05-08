@@ -9,7 +9,7 @@ type Props = Extract<Page['layout'][0], { blockType: 'hoursBlock' }>
 const fetchCurrentHour = async () => {
   try {
     const payload = await getPayload({ config: configPromise })
-    const hour = await payload.find({
+    return await payload.find({
       collection: 'hours',
       where: {
         and: [
@@ -31,7 +31,6 @@ const fetchCurrentHour = async () => {
         ],
       },
     })
-    return hour
   } catch (error) {
     console.error('Error fetching specific hour:', error)
     return null
@@ -92,18 +91,21 @@ const HoursBlockComponent = async (
     <div>
       {hours.length > 0 ? (
         <div className="gap-4 not-prose flex flex-wrap justify-around items-start p-2">
-          {hours.map((hour) => (
-            <div key={hour.id} className={`${type === "current" ? "" : "sm:w-2/12"}`}>
-              {type === 'current' ? (
-                <h3 className="text-3xl font-bold font-display mb-2">Today&#39;s Hours</h3>
-              ) : (
-                <h3 className="text-2xl font-display mb-2">{hour.label}</h3>
-              )}
-              <div className="max-w-none">
-                <RichText enableGutter={false} enableProse={false} content={hour.content} />
+          {hours.map((hour) => {
+            if (!hour) return null
+            return (
+              <div key={hour.id} className={`${type === 'current' ? '' : 'sm:w-2/12'}`}>
+                {type === 'current' ? (
+                  <h3 className="text-3xl font-bold font-display mb-2">Today&#39;s Hours</h3>
+                ) : (
+                  <h3 className="text-2xl font-display mb-2">{hour.label}</h3>
+                )}
+                <div className="max-w-none">
+                  <RichText enableGutter={false} enableProse={false} content={hour.content} />
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       ) : (
         <p className="text-lg"></p>
