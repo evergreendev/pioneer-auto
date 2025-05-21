@@ -16,12 +16,14 @@ interface HeaderClientProps {
   logo: Media
   lightLogo?: Media
   centerNav: boolean
+  children?: React.ReactNode
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({
   header,
   logo,
   centerNav,
+  children
 }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme] = useState<string | null>(null)
@@ -60,22 +62,21 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({
             />
           </Link>
           <div className="hidden sm:block">
-            <h2 className="font-display text-2xl">Today&#39;s Hours</h2>
-            <p className="font-bold">Everyday: 9am - 3pm</p>{/*todo change this to dynamic*/}
-            <p>(Weather permitting)</p>
+            {children}
           </div>
           <div className="flex flex-col items-end mt-8 sm:mt-0">
-            <a href="https://www.google.com/maps/dir/44.0696832,-103.2323072/Pioneer+Auto+Museum,+503+5th+St,+Murdo,+SD+57559/@43.9125794,-102.6291435,287119m/data=!3m2!1e3!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x877f7f4d7d226861:0xcee8415795af2762!2m2!1d-100.7066401!2d43.8863252?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNjM5SAFQAw%3D%3D" className="block text-base font-semibold hover:underline">503 5th St, Murdo, SD 57559</a>
+            <a
+              href="https://www.google.com/maps/dir/44.0696832,-103.2323072/Pioneer+Auto+Museum,+503+5th+St,+Murdo,+SD+57559/@43.9125794,-102.6291435,287119m/data=!3m2!1e3!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x877f7f4d7d226861:0xcee8415795af2762!2m2!1d-100.7066401!2d43.8863252?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNjM5SAFQAw%3D%3D"
+              className="block text-base font-semibold hover:underline"
+            >
+              503 5th St, Murdo, SD 57559
+            </a>
             <a href="tel:6056692691" className="block text-base font-semibold hover:underline mb-2">
               (605) 669-2691
             </a>
             <HeaderBookingButton />
           </div>
-
-
-
         </div>
-
       </div>
 
       <header

@@ -15,6 +15,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import { getPayload } from 'payload'
 import Hero from '@/components/Hero'
 import Image from 'next/image'
+import HoursBlockComponent from '@/blocks/HoursBlock/HoursBlockComponent'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -75,11 +76,7 @@ export default async function Page({ params: paramsPromise }: Args) {
                 <Image src="/come-in-and-visit-our-famous-show.png" width={300} height={200} alt="American Pickers" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold font-display">Hours</h2>
-                <h2 className="text-xl font-semibold">March-May</h2>
-                <p className="text-base">Everyday: 9am - 3pm</p>
-                <p className="text-sm italic">(Weather permitting)</p>
-
+                <HoursBlockComponent blockType="hoursBlock" type="current"/>
                 <a
                   href="tel:6056692691"
                   className="block text-base font-semibold hover:underline"
