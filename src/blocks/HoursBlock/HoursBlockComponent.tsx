@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import RichText from '@/components/RichText'
 import configPromise from '@payload-config'
 import { Hour, type Page } from '@/payload-types'
+import { connection } from 'next/server'
 
 type Props = Extract<Page['layout'][0], { blockType: 'hoursBlock' }>
 
@@ -77,6 +78,8 @@ const HoursBlockComponent = async (
   } & Props,
 ) => {
   const { type, maxHoursToShow = 5 } = props
+
+  await connection();
 
   let hours: Hour[] = []
 
