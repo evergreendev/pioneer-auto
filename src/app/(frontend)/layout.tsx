@@ -54,6 +54,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Footer />
           <Script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"/>
+          {/* Google Analytics */}
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-65KFC2JDNJ" strategy="afterInteractive" />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-65KFC2JDNJ');
+            `}
+          </Script>
       </body>
     {/*<GoogleAnalytics gaId="G-7KBVJ8N50K"/>*/}
     </html>
