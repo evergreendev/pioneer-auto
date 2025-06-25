@@ -9,6 +9,7 @@ import React from 'react'
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/Footer/Component'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { Banner } from '@/components/Banner'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 import './globals.css'
@@ -51,6 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
           <LivePreviewListener />
+          <Banner />
           {children}
           <Footer />
           <Script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"/>

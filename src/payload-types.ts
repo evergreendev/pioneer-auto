@@ -17,6 +17,7 @@ export interface Config {
     testimonials: Testimonial;
     hours: Hour;
     letters: Letter;
+    banners: Banner;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -32,6 +33,7 @@ export interface Config {
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     hours: HoursSelect<false> | HoursSelect<true>;
     letters: LettersSelect<false> | LettersSelect<true>;
+    banners: BannersSelect<false> | BannersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -443,6 +445,50 @@ export interface Hour {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banners".
+ */
+export interface Banner {
+  id: number;
+  /**
+   * A descriptive title for this banner (e.g., "Summer Hours", "Holiday Hours")
+   */
+  title: string;
+  message?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * The banner will stop showing after this date
+   */
+  expirationDate: string;
+  /**
+   * Uncheck to manually hide the banner
+   */
+  isActive?: boolean | null;
+  /**
+   * Enter a valid CSS color (e.g., #FF0000, rgb(255,0,0), red)
+   */
+  backgroundColor?: string | null;
+  /**
+   * Enter a valid CSS color (e.g., #000000, rgb(0,0,0), black)
+   */
+  textColor?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -682,6 +728,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'letters';
         value: number | Letter;
+      } | null)
+    | ({
+        relationTo: 'banners';
+        value: number | Banner;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -987,6 +1037,20 @@ export interface LettersSelect<T extends boolean = true> {
   date?: T;
   content?: T;
   featured?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banners_select".
+ */
+export interface BannersSelect<T extends boolean = true> {
+  title?: T;
+  message?: T;
+  expirationDate?: T;
+  isActive?: T;
+  backgroundColor?: T;
+  textColor?: T;
   updatedAt?: T;
   createdAt?: T;
 }
