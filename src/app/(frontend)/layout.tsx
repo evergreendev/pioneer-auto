@@ -14,6 +14,7 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 import './globals.css'
 import Script from 'next/script'
+import {GoogleTagManager} from '@next/third-parties/google'
 
 const playball = Playball({
   subsets:['latin'],
@@ -41,7 +42,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable, breeSerif.variable, playball.variable, robotoCondensed.variable)} lang="en" suppressHydrationWarning>
-      <head>
+      <GoogleTagManager gtmId="GTM-KSZWKNJP"/>
+    <head>
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
