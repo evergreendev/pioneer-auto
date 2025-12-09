@@ -14,62 +14,75 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 import './globals.css'
 import Script from 'next/script'
-import {GoogleTagManager} from '@next/third-parties/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const playball = Playball({
-  subsets:['latin'],
-  weight: ["400"],
-  variable: "--font-playball",
-  display: "swap"
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-playball',
+  display: 'swap',
 })
 
 const breeSerif = Bree_Serif({
-  subsets:['latin'],
-  weight: ["400"],
-  variable: "--font-bree-serif",
-  display: "swap"
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-bree-serif',
+  display: 'swap',
 })
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
-  weight: ["400", "100", "200", "300", "500", "900"],
-  variable: "--font-roboto",
-  display: "swap"
+  weight: ['400', '100', '200', '300', '500', '900'],
+  variable: '--font-roboto',
+  display: 'swap',
 })
 
-export default async function RootLayout({ children }: { children: React.ReactNode, params: any }) {
+export default async function RootLayout({ children }: { children: React.ReactNode; params: any }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable, breeSerif.variable, playball.variable, robotoCondensed.variable)} lang="en" suppressHydrationWarning>
-      <GoogleTagManager gtmId="GTM-KSZWKNJP"/>
-    <head>
+    <html
+      className={cn(
+        GeistSans.variable,
+        GeistMono.variable,
+        breeSerif.variable,
+        playball.variable,
+        robotoCondensed.variable,
+      )}
+      lang="en"
+      suppressHydrationWarning
+    >
+      <head>
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
+      <GoogleTagManager gtmId="GTM-KSZWKNJP" />
       <body>
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
-          <LivePreviewListener />
-          <Banner />
-          {children}
-          <Footer />
-          <Script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"/>
-          {/* Google Analytics */}
-          <Script src="https://www.googletagmanager.com/gtag/js?id=G-65KFC2JDNJ" strategy="afterInteractive" />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
+        <AdminBar
+          adminBarProps={{
+            preview: isEnabled,
+          }}
+        />
+        <LivePreviewListener />
+        <Banner />
+        {children}
+        <Footer />
+        <Script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes" />
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-65KFC2JDNJ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-65KFC2JDNJ');
             `}
-          </Script>
+        </Script>
       </body>
-    {/*<GoogleAnalytics gaId="G-7KBVJ8N50K"/>*/}
+      {/*<GoogleAnalytics gaId="G-7KBVJ8N50K"/>*/}
     </html>
   )
 }
