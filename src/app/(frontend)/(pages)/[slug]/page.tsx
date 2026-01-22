@@ -11,6 +11,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { Header } from '@/Header/Component'
+import { Modal } from '@/components/Modal'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { getPayload } from 'payload'
 import Hero from '@/components/Hero'
@@ -57,8 +58,10 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { layout, images } = page
 
+
   return (
     <>
+      {slug === 'home' && <Modal />}
       <article>
         <div className="w-full mx-auto">
           <Header centerNav={false} />

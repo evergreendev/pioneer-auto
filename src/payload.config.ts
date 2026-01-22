@@ -33,6 +33,7 @@ import { Footer } from '@/Footer/config'
 import { Header } from '@/Header/config'
 import Testimonials from '@/collections/Testimonials'
 import { Letters } from '@/collections/LettersCollectionConfig'
+import { Modal } from '@/Modal/config'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -63,7 +64,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages, Testimonials, Hours, Letters, Banners],
-  globals: [Header, Footer, SiteOptions],
+  globals: [Header, Footer, SiteOptions, Modal],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
