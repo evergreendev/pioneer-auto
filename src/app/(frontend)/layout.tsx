@@ -81,6 +81,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               gtag('config', 'G-65KFC2JDNJ');
             `}
         </Script>
+        <Script
+          id="trade-desk-universal-pixel-library"
+          src="https://js.adsrvr.org/up_loader.1.1.0.js"
+          strategy="afterInteractive"
+        />
+        <Script id="trade-desk-universal-pixel" strategy="afterInteractive">
+          {`
+            ttd_dom_ready(function () {
+              if (typeof TTDUniversalPixelApi === 'function') {
+                var universalPixelApi = new TTDUniversalPixelApi();
+                universalPixelApi.init('v16qj9y', ['inn3npw'], 'https://insight.adsrvr.org/track/up');
+              }
+            });
+          `}
+        </Script>
       </body>
       {/*<GoogleAnalytics gaId="G-7KBVJ8N50K"/>*/}
     </html>
