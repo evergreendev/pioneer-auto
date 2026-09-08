@@ -93,7 +93,7 @@ const HoursBlockComponent = async (
   return (
     <div>
       {hours.length > 0 ? (
-        <div className="gap-4 not-prose flex flex-wrap justify-around items-start p-2">
+        <div className="gap-4 not-prose flex flex-wrap justify-around items-start p-2 text-center">
           {hours.map((hour) => {
             if (!hour) return null
             return (
