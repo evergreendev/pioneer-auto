@@ -24,18 +24,18 @@ export const ModalDisplay: React.FC<{ modal: ModalType }> = ({ modal }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-6xl bg-white rounded-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+      <div className="relative flex max-h-[calc(100dvh-2rem)] w-full max-w-6xl flex-col bg-white rounded-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors z-10"
+          className="absolute top-4 right-4 p-2 bg-white text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors z-10"
           aria-label="Close modal"
         >
           <X size={24} />
         </button>
 
-        <div className="flex flex-col md:flex-row">
+        <div className="flex min-h-0 flex-col overflow-y-auto overscroll-contain md:flex-row">
           {modal.image && (
-            <div className="w-full md:w-1/2 relative h-64 md:h-auto flex align-center justify-center">
+            <div className="w-full shrink-0 md:w-1/2 relative h-64 md:h-auto flex align-center justify-center">
               <Media
                 resource={modal.image}
                 imgClassName="absolute inset-0 w-full h-full object-cover"
@@ -43,17 +43,21 @@ export const ModalDisplay: React.FC<{ modal: ModalType }> = ({ modal }) => {
               />
             </div>
           )}
-          <div className={`w-full ${modal.image ? 'md:w-1/2' : ''} p-8`}>
-            <RichTextClient content={modal.text} enableGutter={false} />
-            <div className="mt-8">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="w-full py-3 px-6 bg-brand-primary-600 text-white font-bold rounded-md hover:bg-brand-primary-700 transition-colors"
-              >
-                Close
-              </button>
-            </div>
+          <div className={`min-w-0 w-full ${modal.image ? 'md:w-1/2' : ''} p-6 sm:p-8`}>
+            <RichTextClient
+              className="break-words pr-10"
+              content={modal.text}
+              enableGutter={false}
+            />
           </div>
+        </div>
+        <div className={`w-full shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 ${modal.image ? 'md:ml-auto md:w-1/2' : ''}`}>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="w-full py-3 px-6 bg-brand-primary-600 text-white font-bold rounded-md hover:bg-brand-primary-700 transition-colors"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>
